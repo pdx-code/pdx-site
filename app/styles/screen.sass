@@ -1,0 +1,283 @@
+// $font-color: #505050
+$font-color: #333333
+$header-color: darken($font-color, 15%) 
+$p-color: #aa0000 // primary color (red)
+$s-color: #006666 // secondary color (dark aqua)
+$t-color: #6A9F00 // tertiary color (bright green)
+
+$base-font-size: 16px
+//$base-line-height: $base-font-size*1.5
+$base-line-height: 24px
+
+=desaturate
+  filter: grayscale(100%)
+  -webkit-filter: grayscale(100%)
+
+=saturate
+  filter: grayscale(0%)
+  -webkit-filter: grayscale(0%)
+
+@import "compass"
+@import "compass/reset"
+@import "blueprint"
+
++establish-baseline
+
+body
+  +debug-vertical-alignment
+  background-color: darken(#fff, 7%)
+  font-family: sans
+  color: $font-color
+  a.button
+    display: block
+    text-decoration: none
+    text-align: center
+    color: #fff
+    background-color: $p-color
+    +border-radius(5px)
+  .button.large
+    min-width: 150px
+  
+  // ------------------------------------------- HTML styles
+  p.image
+    display: inline-block
+    background: rgba(#f0f, 0.1)
+    padding: $base-rhythm-unit/2
+    img
+      height: auto
+      width: 100%
+  #{headers()}
+    color: $header-color
+  h3
+    +adjust-font-size-to(28px)
+    color: $p-color
+
+#container
+  +margin-leader(5)
+
+// ------------------------------------------- Page Header
+header#page-header
+  display: none
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  z-index: 9999
+  padding: 0px
+  height: 50px
+  background-color: rgba(#000, 0.95)
+  +single-box-shadow(#000, 0px, 0px, 15px)
+  &:before
+    content: ""
+    display: block
+    position: absolute
+    top: 5px
+    left: 5px
+    z-index: 9999
+    width: 120px
+    height: 120px
+    background-image: url(../images/x.svg)
+    background-repeat: no-repeat
+    background-position: top left
+    background-size: contain
+  #site-title
+    position: relative
+    z-index: 9999
+    margin: 0px 100px 0px 0px
+    font-size: 17px
+    font-weight: bold
+    font-style: italic
+    a
+      color: #999
+      display: block
+      text-decoration: none
+      padding: 26px 0px 0px 100px
+      margin-right: 100px
+
+// ------------------------------------------- Main Navigation
+#main-nav
+  text-align: right
+  position: absolute
+  z-index: 99
+  top: 0
+  left: 0
+  right: 0
+  #menu-button
+    display: inline-block
+    position: absolute
+    right: 0
+    top: 0
+    width: 50px
+    height: 50px
+    background-color: $p-color
+    +hide-text
+    background-image: url(../images/menu-button.svg)
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: contain
+  #menu
+    position: absolute
+    top: 50px
+    right: 0
+    left: 0
+    text-align: center
+    background: rgba(#000, 0.95)
+    margin: 0px
+    padding: 0px
+    +no-bullets
+    a
+      display: block
+      padding: 20px 0px
+      color: #fff
+      text-decoration: none
+      border-top: 1px solid #222
+  #menu.hidden
+    display: none
+
+// ------------------------------------------- Introduction
+#introduction
+  font-family: 'Gudea', sans-serif
+
+// ------------------------------------------- Featured Projects
+#featured-projects-wrapper
+  background: rgba(#0f0, 0.1)
+
+.cycle-pager
+  display: none
+
+#featured-projects
+  width: 90%
+  background: rgba(#f00, 0.3)
+  margin: 0px auto
+  figure
+    width: 100%
+    height: auto
+    img
+      max-width: 100%
+  figcaption
+    background: rgba(#000, 0.9)
+    position: absolute
+    bottom: 0
+    width: 100%
+
+
+// ------------------------------------------- Services
+.service
+  width: 90%
+  margin: 0px auto
+  text-align: center
+  img.service-image
+    +desaturate
+    &:hover
+      +saturate
+  .service-details
+    text-align: left
+
+// ------------------------------------------- Video Container
+.video-container
+  position: relative
+  padding-bottom: 56.25%
+  padding-top: 30px
+  height: 0
+  overflow: hidden
+  iframe, object, embed
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+// --------------------------------------------------------------
+// ------------------------------------------- Media: Medium Size
+// --------------------------------------------------------------
+@media screen and (min-width: 800px)
+  body
+    margin: 0px
+    a.button
+      display: inline-block
+      margin-right: 20px
+      margin-left: 20px
+  
+  // ------------------------------------------- Medium Page Header
+  header#page-header
+    position: static
+    top: auto
+    left: auto
+    right: auto
+    height: auto
+    z-index: 0
+    padding: 0px
+    box-shadow: none
+    background: transparent
+    text-align: center
+    margin-bottom: 20px
+    &:before
+      display: none
+    #site-title
+      position: static
+      z-index: 0
+      margin: 0px
+      a
+        color: #999
+        display: inline-block
+        padding: 0px
+        margin: 0px
+        min-height: 170px
+        width: 100%
+        +hide-text
+        background-image: url(../images/pdx.svg)
+        background-repeat: no-repeat
+        background-position: center center
+        background-size: contain
+  
+  // ------------------------------------------- Medium Page Header
+  #main-nav
+    text-align: left
+    z-index: 0
+    background: rgba(#000, 0.0)
+    #menu-button
+      display: none
+    #menu
+      position: static
+      top: auto
+      right: auto
+      left: auto
+      text-align: left
+      background: transparent
+      margin: 0px
+      padding: 0px
+      text-align: center
+      +inline-block-list
+      a
+        display: inline-block
+        padding: 0px
+        color: $font-color
+        text-decoration: none
+        border: none
+        padding: 10px 15px
+    #menu.hidden
+      display: block
+  
+  // ------------------------------------------- Medium Projects Wrapper
+  // #featured-projects-wrapper
+  //   height: 17*$base-rhythm-unit
+  
+  #featured-projects
+    background: rgba(#fcc, 0.7)
+    figure
+      img
+        display: inline-block
+        width: 70%
+      figcaption
+        display: inline-block
+        width: 30%
+        background: rgba(#000, 0.9)
+        color: #fff
+        position: absolute
+        top: 0
+        right: 0
+        height: 100%
+        
+.button-group
+  text-align: center
+  margin: 1.5em auto
