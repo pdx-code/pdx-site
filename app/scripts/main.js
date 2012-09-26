@@ -1,7 +1,6 @@
 function baseLineHeight(element) {
   var elementHeight, baseLineMeasure, baseLine, baseLineCount, adjustedHeight, elementChild;
   
-  // elementChild = $(element).find("img").first();
   $(element).each(function(){
     elementHeight = $(this).outerHeight(true); 
     elementChild = $(this).find("img")
@@ -11,20 +10,10 @@ function baseLineHeight(element) {
     baseLineCount = Math.ceil(elementChildHeight/baseLine);
     adjustedHeight = baseLineCount*baseLine;
     $(this).height(adjustedHeight);
-    
-    console.log(elementChild);
-    console.log("container line height: " + baseLine);
-    console.log("container element height: " + elementHeight);
-    console.log("container image height: " + elementChildHeight);
-    console.log("container readjusted height: " + adjustedHeight);
-    console.log("-----------");
   });
 }
 
 $.event.special.debouncedresize.threshold = 150;
-
-// debulked onresize handler
-// function on_resize(c,t){onresize=function(){clearTimeout(t);t=setTimeout(c,100)};return c};
 
 $(document).ready(function(){
 
