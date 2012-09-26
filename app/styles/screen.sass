@@ -5,9 +5,12 @@ $p-color: #aa0000 // primary color (red)
 $s-color: #006666 // secondary color (dark aqua)
 $t-color: #6A9F00 // tertiary color (bright green)
 
+$grid-background-baseline-color: rgba(#000, 0.9)
 $base-font-size: 16px
-//$base-line-height: $base-font-size*1.5
 $base-line-height: 24px
+
+$default-width: 95%
+$full-width: 100%
 
 =desaturate
   filter: grayscale(100%)
@@ -26,75 +29,81 @@ $base-line-height: 24px
 body
   +debug-vertical-alignment
   background-color: darken(#fff, 7%)
-  font-family: sans
+  font-family: sans-serif
   color: $font-color
   a.button
     display: block
     text-decoration: none
     text-align: center
     color: #fff
-    background-color: $p-color
+    background-color: rgba($p-color, 1)
     +border-radius(5px)
+    padding-top: $base-line-height/2
+    padding-bottom: $base-line-height/2
+    +margin-trailer()
   .button.large
     min-width: 150px
   
   // ------------------------------------------- HTML styles
   p.image
     display: inline-block
-    background: rgba(#f0f, 0.1)
     padding: $base-rhythm-unit/2
     img
       height: auto
       width: 100%
   #{headers()}
     color: $header-color
-  h3
+  h1
     +adjust-font-size-to(28px)
+  h3
+    +adjust-font-size-to(26px)
     color: $p-color
 
 #container
-  +margin-leader(5)
+  +margin-leader(3)
 
 // ------------------------------------------- Page Header
 header#page-header
-  display: none
   position: fixed
   top: 0
   left: 0
   right: 0
+  width: 100%
   z-index: 9999
   padding: 0px
-  height: 50px
-  background-color: rgba(#000, 0.95)
-  +single-box-shadow(#000, 0px, 0px, 15px)
-  &:before
-    content: ""
-    display: block
-    position: absolute
-    top: 5px
-    left: 5px
-    z-index: 9999
-    width: 120px
-    height: 120px
-    background-image: url(../images/x.svg)
-    background-repeat: no-repeat
-    background-position: top left
-    background-size: contain
-  #site-title
+  background-color: rgba(#000, 0.9)
+  height: $base-line-height*2
+  h1#site-title
     position: relative
-    z-index: 9999
-    margin: 0px 100px 0px 0px
-    font-size: 17px
-    font-weight: bold
-    font-style: italic
+    display: inline-block
+    +adjust-font-size-to(22px)
+    padding-left: 70px
     a
-      color: #999
-      display: block
+      color: #fff
       text-decoration: none
-      padding: 26px 0px 0px 100px
-      margin-right: 100px
+    &:before
+      content: ""
+      position: absolute
+      top: 0
+      left: 0
+      width: 70px
+      height: $base-line-height*2
+      background: url(../images/x.svg) no-repeat center left
+      background-size: contain
+
 
 // ------------------------------------------- Main Navigation
+#menu-button
+  display: block
+  position: absolute
+  top: 0
+  right: 0
+  +padding-leader()
+  width: 75px
+  background: $p-color url("../images/menu-button.svg") no-repeat center center
+  +hide-text()
+  background-size: contain
+
 #main-nav
   text-align: right
   position: absolute
@@ -102,70 +111,73 @@ header#page-header
   top: 0
   left: 0
   right: 0
-  #menu-button
-    display: inline-block
-    position: absolute
-    right: 0
-    top: 0
-    width: 50px
-    height: 50px
-    background-color: $p-color
-    +hide-text
-    background-image: url(../images/menu-button.svg)
-    background-repeat: no-repeat
-    background-position: center center
-    background-size: contain
+
   #menu
     position: absolute
-    top: 50px
+    top: $base-line-height*2
     right: 0
     left: 0
     text-align: center
-    background: rgba(#000, 0.95)
+    background: rgba(#000, 0.9)
     margin: 0px
     padding: 0px
     +no-bullets
     a
       display: block
-      padding: 20px 0px
       color: #fff
       text-decoration: none
       border-top: 1px solid #222
+      +padding-leader()
+      +padding-trailer()
+      &:hover
+        background: #000
   #menu.hidden
     display: none
 
 // ------------------------------------------- Introduction
 #introduction
-  font-family: 'Gudea', sans-serif
+  width: $default-width
+  margin: 0px auto
+  +adjust-font-size-to(20px)
+  // font-family: 'Gudea', sans-serif
 
 // ------------------------------------------- Featured Projects
-#featured-projects-wrapper
-  background: rgba(#0f0, 0.1)
-
 .cycle-pager
   display: none
 
+#featured-projects-wrapper
+  background: $s-color
+  padding: 24px 0px
+  +margin-trailer
 #featured-projects
-  width: 90%
-  background: rgba(#f00, 0.3)
+  width: $full-width
+  // background: rgba(#f00, 0.3)
   margin: 0px auto
+  // +margin-leader()
   figure
     width: 100%
     height: auto
     img
       max-width: 100%
   figcaption
-    background: rgba(#000, 0.9)
-    position: absolute
-    bottom: 0
-    width: 100%
+    display: none
+    // color: #fff
+    // position: absolute
+    // bottom: 0
+    // width: 100%
+    // height: $base-line-height*2
+    // padding: $base-line-height/2 0px
+    // background: rgba(#000, 0.9)
 
 
 // ------------------------------------------- Services
 .service
-  width: 90%
+  width: $default-width
   margin: 0px auto
   text-align: center
+  +margin-trailer()
+  p.image
+    padding: 0px
   img.service-image
     +desaturate
     &:hover
@@ -188,6 +200,14 @@ header#page-header
     height: 100%
 
 // --------------------------------------------------------------
+// ------------------------------------------- Media: iPhone 3gs and lower
+// --------------------------------------------------------------
+@media screen and (max-width: 480px)
+  header#page-header
+    h1#site-title
+      font-size: 18px
+
+// --------------------------------------------------------------
 // ------------------------------------------- Media: Medium Size
 // --------------------------------------------------------------
 @media screen and (min-width: 800px)
@@ -199,69 +219,10 @@ header#page-header
       margin-left: 20px
   
   // ------------------------------------------- Medium Page Header
-  header#page-header
-    position: static
-    top: auto
-    left: auto
-    right: auto
-    height: auto
-    z-index: 0
-    padding: 0px
-    box-shadow: none
-    background: transparent
-    text-align: center
-    margin-bottom: 20px
-    &:before
-      display: none
-    #site-title
-      position: static
-      z-index: 0
-      margin: 0px
-      a
-        color: #999
-        display: inline-block
-        padding: 0px
-        margin: 0px
-        min-height: 170px
-        width: 100%
-        +hide-text
-        background-image: url(../images/pdx.svg)
-        background-repeat: no-repeat
-        background-position: center center
-        background-size: contain
   
-  // ------------------------------------------- Medium Page Header
-  #main-nav
-    text-align: left
-    z-index: 0
-    background: rgba(#000, 0.0)
-    #menu-button
-      display: none
-    #menu
-      position: static
-      top: auto
-      right: auto
-      left: auto
-      text-align: left
-      background: transparent
-      margin: 0px
-      padding: 0px
-      text-align: center
-      +inline-block-list
-      a
-        display: inline-block
-        padding: 0px
-        color: $font-color
-        text-decoration: none
-        border: none
-        padding: 10px 15px
-    #menu.hidden
-      display: block
+  // ------------------------------------------- Medium Main Nav
   
   // ------------------------------------------- Medium Projects Wrapper
-  // #featured-projects-wrapper
-  //   height: 17*$base-rhythm-unit
-  
   #featured-projects
     background: rgba(#fcc, 0.7)
     figure
@@ -279,5 +240,5 @@ header#page-header
         height: 100%
         
 .button-group
-  text-align: center
+  width: $default-width
   margin: 1.5em auto
