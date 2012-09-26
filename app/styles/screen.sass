@@ -5,7 +5,7 @@ $p-color: #aa0000 // primary color (red)
 $s-color: #006666 // secondary color (dark aqua)
 $t-color: #6A9F00 // tertiary color (bright green)
 
-$grid-background-baseline-color: rgba(#000, 0.9)
+$grid-background-baseline-color: rgba(#000, 0.5)
 $base-font-size: 16px
 $base-line-height: 24px
 
@@ -26,9 +26,14 @@ $full-width: 100%
 
 +establish-baseline
 
-body
+html
+
+body.debug-baseline
+  background-image: none
   +debug-vertical-alignment
-  background-color: darken(#fff, 7%)
+
+body
+  background-image: url("../images/sage.png")
   font-family: sans-serif
   color: $font-color
   a.button
@@ -146,7 +151,7 @@ header#page-header
   display: none
 
 #featured-projects-wrapper
-  background: $s-color
+  background: rgba(#000, 0.1)
   padding: 24px 0px
   +margin-trailer
 #featured-projects

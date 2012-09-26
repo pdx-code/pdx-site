@@ -35,6 +35,13 @@ $(document).ready(function(){
     }
   );
 
+  $(document).keyup(function(event){
+    console.log(event.keyCode);
+    if(event.keyCode == 27) {
+      $("body").toggleClass("debug-baseline");
+    }
+  });
+
 });
 
 $(window).bind('load', function(){
