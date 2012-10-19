@@ -13,134 +13,160 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link href='http://fonts.googleapis.com/css?family=Droid+Sans|Gudea:700|Didact+Gothic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Exo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>        
         
         <link rel="stylesheet" href="styles/screen.css"/>
         <link rel="stylesheet" href="styles/main.css"/>
         <script src="scripts/vendor/modernizr.min.js"></script>
     </head>
     <body>
-    <div id="container">
-      <header id="page-header">
-        <h1 id="site-title">
-          <a href="#">ProDesignXpress</a>
-        </h1>
+      <div id="container">
         
-        <a id="menu-button" href="#">MENU</a>
-        <nav id="main-nav">
-          <ul id="menu" class="hidden">
-            <li><a href="#" class="menu-link">about</a></li>
-            <li><a href="#" class="menu-link">services</a></li>
-            <li><a href="#" class="menu-link">employment</a></li>
-            <li><a href="#" class="menu-link">contact</a></li>
-          </ul>
-        </nav>
-      </header>
-      
-      
-      <div id="featured-projects-wrapper">
-        <div id="featured-projects"
-          class = "cycle-slideshow"
+        <header id="page-header">
+          <h1 id="site-title">
+            <a href="#">ProDesignXpress</a>
+          </h1>
           
-          data-cycle-fx = "scrollHorz"
-          data-cycle-timeout = "6000"
-          data-cycle-slides = "> figure"
-          data-cycle-pause-on-hover = "true">
-          
-          <div class="cycle-pager"></div>
-          
-          <figure class="project">
-            <img src="/images/envie-boutique.png" alt="Envie Boutique" />
-            <figcaption>
-              Envie Boutique Commercial
-            </figcaption>
-          </figure>
-          
-          <figure class="project">
-            <img src="/images/king-of-hoops.png" alt="King of Hoops Promotion" />
-            <figcaption>
-              King of Hoops Promotion
-            </figcaption>
-          </figure>
-          
-          <figure class="project">
-            <img src="/images/a-way-of-life.png" alt="A Way of Life - AWOL Music" />
-            <figcaption>
-              A Way of Life - AWOL Music
-            </figcaption>
-          </figure>
+          <a id="menu-button" href="#">MENU</a>
+          <nav id="main-nav">
+            <ul id="menu" class="hidden">
+              <li><a href="#" class="menu-link">about</a></li>
+              <li><a href="#" class="menu-link">services</a></li>
+              <li><a href="#" class="menu-link">employment</a></li>
+              <li><a href="#" class="menu-link">contact</a></li>
+            </ul>
+          </nav>
+        </header>
         
-        </div>
-      </div><!-- featured-projects-wrapper -->
+        <div id="featured-projects-wrapper">
+          <div id="featured-projects">
+            
+            <!-- <div class="cycle-pager"></div> -->
+            
+            <figure id="boutique" class="project">
+              <img src="/images/envie-boutique.png" alt="Envie Boutique" class=""/>
+              <figcaption>
+                <h4 class="project-title titleIn">
+                  <a href="#" class="details-link">
+                    Envie Boutique Commercial
+                  </a>
+                </h4>
+                <div class="description">
+                  Envie Boutique needed a commercial to run on local television stations.
+                  This is a description of the project that you are looking at.
+                </div>
+              </figcaption>
+              <div class="lower-third show">
+                <div class="ribbon" id="ribbon-one"></div>
+                <div class="ribbon" id="ribbon-two"></div>
+                <div class="ribbon" id="ribbon-three"></div>
+                <div class="ribbon" id="ribbon-four"></div>
+              </div>
+            </figure>
+            
+            <figure class="project">
+              <img src="/images/king-of-hoops.png" alt="King of Hoops Promotion"  class=""/>
+              <figcaption>
+                <h4 class="project-title">
+                  <a href="#" class="details-link">
+                    King of Hoops Promotion
+                  </a>
+                </h4>
+                <div class="description">
+                  This was a promotional video for a charity basketball tournament.
+                  This is a description of the project that you are looking at.
+                </div>
+              </figcaption>
+              <div class="lower-third show">
+                <div class="ribbon" id="ribbon-one"></div>
+                <div class="ribbon" id="ribbon-two"></div>
+                <div class="ribbon" id="ribbon-three"></div>
+                <div class="ribbon" id="ribbon-four"></div>
+              </div>
+            </figure>
+            
+            <figure class="project">
+              <img src="/images/a-way-of-life.png" alt="A Way of Life - AWOL Music"  class=""/>
+              <figcaption>
+                <h4 class="project-title">
+                  <a href="#" class="details-link">
+                    A Way of Life - AWOL Music
+                  </a>
+                </h4>
+                <div class="description">
+                  This music video shows what family can do together. 
+                  This is a description of the project that you are looking at.
+                </div>
+              </figcaption>
+              <div class="lower-third show">
+                <div class="ribbon" id="ribbon-one"></div>
+                <div class="ribbon" id="ribbon-two"></div>
+                <div class="ribbon" id="ribbon-three"></div>
+                <div class="ribbon" id="ribbon-four"></div>
+              </div>
+            </figure>
+          
+          </div><!-- featured-projects [cycle] -->
+        </div><!-- featured-projects-wrapper -->
 
-      <div id="introduction">
-        <p>
-          ProDesignXpress was established in 2011 and created for the customer who is interested in quality Media services at a good price. Pro Design Xpress is a small (express) sized business comprised of very talented, artistic individuals who are serious about their work. 
-        </p>
-      </div><!-- introduction -->
+        <div id="introduction">
+          <p>
+            ProDesignXpress was established in 2011 and created for the customer who is interested in quality Media services at a good price. Pro Design Xpress is a small (express) sized business comprised of very talented, artistic individuals who are serious about their work. 
+          </p>
+        </div><!-- introduction -->
 
-      <div id="main">
-        <div class="button-group">
-          <a id="folio" class="button large" href="folio.html">View our Portfolio</a>
-          <a id="request" class="button large" href="request.html">Request Work</a>
-        </div>
-        
-        <section class="service" id="videography">
-          <p class="image">
-            <img class="service-image" id="videography-image" src="/images/video.jpg" alt="Videography" />
-          </p>
-          <div class="service-details">
-            <h3>Videography</h3>
-            <p>Using video to document the world in its truest form and bring its characters to life.</p> 
+        <div id="main">
+          <div class="button-group">
+            <a id="next" class="button large" href="">Next Slide</a>
+            <a id="folio" class="button large" href="folio.html">View our Portfolio</a>
+            <a id="request" class="button large" href="request.html">Request Work</a>
           </div>
-        </section>
-        
-        <section class="service" id="graphic-design">
-          <p class="image">
-          <img class="service-image" id="graphic-design-image" src="/images/atlanta-sports.jpg" alt="Graphic Design" />
-          </p>
-          <div class="service-details">
-            <h3>Graphic Design</h3>
-            <p>Using video to document the world in its truest form and bring its characters to life.</p> 
-          </div>
-        </section>
-        
-        <section class="service" id="photography">
-          <p class="image">
-          <img class="service-image" id="photography-image" src="/images/photography.jpg" alt="Photography" />
-          </p>
-          <div class="service-details">
-            <h3>Photography</h3>
-            <p>Using still images to share the reality of the human condition by capturing specific moments in time.</p> 
-          </div>
-        </section>
-        
-      
-      </div><!-- end #main -->
-    </div><!-- end .container -->
-
-        <!--[if lt IE 7]>
-            <p class="chromeframe">
-              You are using an outdated browser. 
-              <a href="http://browsehappy.com/">
-                Upgrade your browser today
-              </a> 
-              or 
-              <a href="http://www.google.com/chromeframe/?redirect=true">
-                install Google Chrome Frame
-              </a>
-               to better experience this site.
+          
+          <section class="service" id="videography">
+            <p class="image">
+              <img class="service-image" id="videography-image" src="/images/video.jpg" alt="Videography" />
             </p>
-        <![endif]-->
+            <div class="service-details">
+              <h3>Videography</h3>
+              <p>Using video to document the world in its truest form and bring its characters to life.</p> 
+            </div>
+          </section>
+          
+          <section class="service" id="graphic-design">
+            <p class="image">
+            <img class="service-image" id="graphic-design-image" src="/images/atlanta-sports.jpg" alt="Graphic Design" />
+            </p>
+            <div class="service-details">
+              <h3>Graphic Design</h3>
+              <p>Using video to document the world in its truest form and bring its characters to life.</p> 
+            </div>
+          </section>
+          
+          <section class="service" id="photography">
+            <p class="image">
+            <img class="service-image" id="photography-image" src="/images/photography.jpg" alt="Photography" />
+            </p>
+            <div class="service-details">
+              <h3>Photography</h3>
+              <p>Using still images to share the reality of the human condition by capturing specific moments in time.</p> 
+            </div>
+          </section>
+          
+        
+        </div><!-- end #main -->
+      </div><!-- end .container -->
 
         <!-- Add your site or application content here -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="scripts/vendor/jquery.min.js"><\/script>')</script>
         
         <script src="/scripts/jquery.cycle2.min.js"></script>
-        <script src="/scripts/jquery.cycle2.center.min.js"></script>
+        <script src="/scripts/jquery.cycle2.swipe.min.js"></script>
         <script src="/scripts/jquery.debouncedresize.js"></script>
         
+        <script src="/scripts/debug.js"></script>
+        <script src="/scripts/functions.js"></script>
         <script src="/scripts/main.js"></script>
         
 

@@ -1,4 +1,6 @@
-// $font-color: #505050
+$default-origin-x: 0px
+$default-origin-y: 0px
+
 $font-color: #333333
 $header-color: darken($font-color, 15%) 
 
@@ -24,18 +26,18 @@ $full-width: 100%
 @import "compass"
 @import "compass/reset"
 @import "blueprint"
+@import "animations"
 
 +establish-baseline
-
-html
 
 body.debug-baseline
   background-image: none
   +debug-vertical-alignment
 
 body
+  overflow: hidden
   background-image: url("../images/sage.png")
-  font-family: sans-serif
+  font-family: 'Exo', sans-serif
   color: $font-color
   a.button
     display: block
@@ -43,7 +45,6 @@ body
     text-align: center
     color: #fff
     background-color: rgba($p-color, 1)
-    +border-radius(5px)
     padding-top: $base-line-height/2
     padding-bottom: $base-line-height/2
     +margin-trailer()
@@ -64,6 +65,8 @@ body
   h3
     +adjust-font-size-to(26px)
     color: $p-color
+  h4
+    +adjust-font-size-to(24px)
 
 #container
   +margin-leader(3)
@@ -77,7 +80,8 @@ header#page-header
   width: 100%
   z-index: 9999
   padding: 0px
-  background-color: rgba(#000, 0.9)
+  // background-color: rgba(#000, 0.9)
+  background-color: $s-color
   height: $base-line-height*2
   h1#site-title
     position: relative
@@ -144,37 +148,231 @@ header#page-header
 #introduction
   width: $default-width
   margin: 0px auto
-  +adjust-font-size-to(20px)
+  font-weight: bold
   // font-family: 'Gudea', sans-serif
 
 // ------------------------------------------- Featured Projects
-.cycle-pager
-  display: none
+#introduction
+  visibility: hidden // TODO: remove debuging
+  height: 10px
 
-#featured-projects-wrapper
-  background: rgba(#000, 0.1)
-  padding: 24px 0px
-  +margin-trailer
 #featured-projects
-  width: $full-width
-  // background: rgba(#f00, 0.3)
-  margin: 0px auto
-  // +margin-leader()
+  width: $default-width
+  margin: 24px auto
+  overflow: hidden
+  // positioning
+  //   <figure> absolute
+  //     <img> relative [nessesary to maintain slide's height]
+  //     <figcaption> absolute [absolute to get to top left position]
   figure
     width: 100%
     height: auto
-    img
-      max-width: 100%
-  figcaption
-    display: none
-    // color: #fff
-    // position: absolute
-    // bottom: 0
-    // width: 100%
-    // height: $base-line-height*2
-    // padding: $base-line-height/2 0px
-    // background: rgba(#000, 0.9)
+    figcaption
+      position: absolute
+      z-index: 9999
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      h4.project-title
+        position: absolute
+        bottom: 5%
+        height: 53px
+        width: 100%
+        opacity: 0
+        text-align: right
+        +adjust-font-size-to(14px)
+        display: none
+      h4.project-title.titleIn
+        display: block
+        -webkit-animation: titleEnter 250ms ease-in 1000ms forwards
+        a
+          color: #fff
+          font-weight: bold
+          text-decoration: none
+          line-height: 53px
+          display: block
+          padding-right: 25px
+      .description
+        background: rgba(#000, 0.7)
+        width: 65%
+        position: absolute
+        right: 3%
+        bottom: 21%
+        height: 100% - 21% - 3%
+        color: #fff
+        display: none
 
+figure
+  img
+    position: relative
+    right: -100%
+    width: 100%
+    height: auto
+    -webkit-animation: imgEnter 500ms ease-in forwards
+
+figure
+  img.imgExit
+    position: relative
+    right: -100%
+    width: 100%
+    height: auto
+    -webkit-animation: imgExit 500ms ease-in forwards
+
+// ------------------------------------------- Lower Third
+$ribbon-color: $p-color
+
+.lower-third
+  position: absolute
+  bottom: 5%
+  left: 0
+  right: 0
+  z-index: 999
+  height: 60px
+  -webkit-perspective: 150
+  -webkit-perspective-origin: 20px 50%
+  .ribbon
+    position: absolute
+    background: $p-color
+  
+.lower-third.show
+  #ribbon-one
+    bottom: 0
+    height: 60px
+    // width: 50px
+    +background(linear-gradient(left, darken($ribbon-color, 10%) 5%, darken($ribbon-color, 0%)))
+    -webkit-transform-origin: 0px 0% 
+    -webkit-transform: rotateY(59deg) 
+    -webkit-animation: ribbon-one-enter 200ms forwards
+  
+  #ribbon-two
+    bottom: 16px
+    // width: 50px
+    height: 30px
+    left: 24.5px
+    +background(linear-gradient(left, darken($ribbon-color, 20%), darken($ribbon-color, 30%)))
+    -webkit-animation: ribbon-two-enter 200ms 200ms forwards
+  
+  #ribbon-three
+    bottom: 16px
+    height: 30px
+    // width: 68px
+    left: 74px
+    -webkit-transform-origin: 0px 0% 
+    -webkit-transform: rotateY(-100deg) 
+    +background(linear-gradient(right, darken($ribbon-color, 10%), darken($ribbon-color, 25%)))
+    -webkit-animation: ribbon-three-enter 250ms 200ms+200ms forwards
+  
+  #ribbon-four
+    height: 53px
+    // width: 100%
+    bottom: 5px
+    left: 96px
+    // +background(linear-gradient(left, darken($ribbon-color, 0%), darken($ribbon-color, 15%)))
+    // -webkit-transform-origin: 0px 0% 
+    // -webkit-transform: rotateY(-6deg) 
+    -webkit-animation: ribbon-four-enter 200ms ease-in 250ms+200ms+200ms forwards
+
+.lower-third.hide
+  #ribbon-one
+    bottom: 0
+    height: 60px
+    width: 50px
+    +background(linear-gradient(left, darken($ribbon-color, 10%) 5%, darken($ribbon-color, 0%)))
+    -webkit-transform-origin: 0px 0% 
+    -webkit-transform: rotateY(59deg) 
+    -webkit-animation: ribbon-one-exit 250ms 750ms forwards
+  
+  #ribbon-two
+    bottom: 16px
+    width: 50px
+    height: 30px
+    left: 24.5px
+    +background(linear-gradient(left, darken($ribbon-color, 20%), darken($ribbon-color, 30%)))
+    -webkit-animation: ribbon-two-exit 250ms 500ms forwards
+  
+  #ribbon-three
+    bottom: 16px
+    height: 30px
+    width: 68px
+    left: 74px
+    -webkit-transform-origin: 0px 0% 
+    -webkit-transform: rotateY(-100deg) 
+    +background(linear-gradient(right, darken($ribbon-color, 10%), darken($ribbon-color, 25%)))
+    -webkit-animation: ribbon-three-exit 250ms 250ms forwards
+  
+  #ribbon-four
+    height: 53px
+    width: 100%
+    bottom: 5px
+    left: 96px
+    -webkit-animation: ribbon-four-exit 250ms forwards
+// -------------------------------------------------------------------------------
+// -------------------------------------------------------------------  Animations
+// -------------------------------------------------------------------------------
+
+@-webkit-keyframes ribbon-one-exit
+  from
+    width: 50px
+  to
+    width: 0px
+
+@-webkit-keyframes ribbon-two-exit
+  from
+    width: 50px
+  to
+    width: 0px
+
+@-webkit-keyframes ribbon-three-exit
+  from
+    width: 68px
+  to
+    width: 0px
+
+@-webkit-keyframes ribbon-four-exit
+  from
+    width: 100%
+  to
+    width: 0%
+
+// -------------------- ribbon enter
+@-webkit-keyframes ribbon-one-enter
+  from
+    width: 0px
+  to
+    width: 50px
+
+@-webkit-keyframes ribbon-two-enter
+  from
+    width: 0px
+  to
+    width: 50px
+
+@-webkit-keyframes ribbon-three-enter
+  from
+    width: 0px
+  to
+    width: 68px
+
+@-webkit-keyframes ribbon-four-enter
+  from
+    width: 0%
+  to
+    width: 100%
+
+
+// ------------------------------------------------ Animate Image
+@-webkit-keyframes imgEnter
+  from
+    right: -100%
+  to
+    right: 0%
+
+@-webkit-keyframes imgExit
+  from
+    right: 0%
+  to
+    right: -100%
 
 // ------------------------------------------- Services
 .service
@@ -229,21 +427,6 @@ header#page-header
   // ------------------------------------------- Medium Main Nav
   
   // ------------------------------------------- Medium Projects Wrapper
-  #featured-projects
-    background: rgba(#fcc, 0.7)
-    figure
-      img
-        display: inline-block
-        width: 70%
-      figcaption
-        display: inline-block
-        width: 30%
-        background: rgba(#000, 0.9)
-        color: #fff
-        position: absolute
-        top: 0
-        right: 0
-        height: 100%
         
 .button-group
   width: $default-width
