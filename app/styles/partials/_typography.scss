@@ -1,0 +1,23 @@
+#{elements-of-type(block)} {
+  margin-bottom: 1.5em;
+}
+
+#{headers()} {
+  color: $header-color;
+}
+
+h1 {
+  @include adjust-font-size-to(28px);
+}
+h3 {
+  @include adjust-font-size-to(26px);
+  color: $red;
+}
+h4 {
+  @include adjust-font-size-to(24px);
+}
+
+a {
+  color: $red;
+  text-decoration: none;
+}

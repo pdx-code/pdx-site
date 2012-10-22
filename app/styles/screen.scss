@@ -1,0 +1,230 @@
+@import "partials/base";
+@import "compass";
+@import "compass/reset";
+@import "blueprint";
+@import "blueprint/liquid";
+@import "partials/typography";
+@import "animations";
+
+@include establish-baseline;
+
+body {
+  font-family: "Exo", sans-serif;
+  color: $font-color;
+  a.button {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    background-color: rgba($red, 1);
+    padding-top: $base-line-height / 2;
+    padding-bottom: $base-line-height / 2;
+    @include margin-trailer;
+  }
+  .button.large {
+    min-width: 150px;
+  }
+  p.image {
+    display: inline-block;
+    padding: $base-rhythm-unit / 2;
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+  
+}
+
+#container {
+  @include container;
+  @include margin-leader(3);
+}
+
+#introduction {
+  @include respond-to(desktops) {
+    @include column(16);
+    @include adjust-font-size-to(22px);
+  }
+}
+
+.button-group {
+  @include respond-to(desktops) {
+    @include column(8, true);
+  }
+}
+
+#main {
+  @include respond-to(desktops) {
+    @include column(24, true);
+    section {
+      @include column(8);
+    }
+    & section:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+// ------------------------------------------- Page Header
+header#page-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  padding: 0px;
+  background-color: $aqua;
+  height: $base-line-height * 2;
+  h1#site-title {
+    position: relative;
+    display: inline-block;
+    @include adjust-font-size-to(22px);
+    padding-left: 70px;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 70px;
+      height: $base-line-height * 2;
+      background: url(../images/x.svg) no-repeat center left;
+      background-size: contain;
+    }
+  }
+}
+
+// ------------------------------------------- Main Navigation
+#menu-button {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  @include padding-leader;
+  width: 75px;
+  background: $red url("../images/menu-button.svg") no-repeat center center;
+  @include hide-text;
+  background-size: contain;
+}
+
+#main-nav {
+  text-align: right;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  #menu {
+    position: absolute;
+    top: $base-line-height * 2;
+    right: 0;
+    left: 0;
+    text-align: center;
+    background: rgba(black, 0.9);
+    margin: 0px;
+    padding: 0px;
+    @include no-bullets;
+    a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      border-top: 1px solid #222222;
+      @include padding-leader;
+      @include padding-trailer;
+      &:hover {
+        background: black;
+      }
+    }
+  }
+  #menu.hidden {
+    display: none;
+  }
+}
+
+// ------------------------------------------- Featured Projects
+#featured-projects-wrapper{
+  @include respond-to(desktops) {
+    width: 80%;
+    margin: 0px auto; 
+    padding: 0px 10%;
+  }
+}
+#featured-projects { 
+}
+
+
+// slide styles 
+// (the way the slides look no matter how old the browser)
+// ----------------------------------------------------------
+.cycle-slide {
+  width: 100%;
+  margin: 0px auto;
+  overflow: hidden;
+}
+
+.cycle-slide img {
+  display: block;
+  width: 100%; 
+  height: auto;
+}
+  
+.cycle-slide figcaption {
+  position: absolute;
+  bottom: 0px; right: 0px; left: 0px;
+  
+  .description {
+    display: none;
+    position: absolute;
+    bottom: 0px;
+  }
+  
+  .project-title {
+    display: block;
+    margin: 0;
+    width: 80%;
+    background-color: $aqua;
+    text-align: right;
+    font-size: 16px;
+    font-weight: normal;
+    a {color: white;}
+  }
+
+}
+
+// active slide styles
+// ----------------------------------------------------------
+.cycle-slide-active img {
+  -webkit-transform: translateX(100%);
+  -webkit-animation: projectImageIn 850ms ease-out forwards;
+}
+
+.cycle-slide-active figcaption {
+  
+  .project-title {
+    -webkit-transform: translate(-100%, -30%);
+    -webkit-animation: projectTitleIn 850ms ease-out forwards;
+  }
+
+}
+
+
+/*----------------------------------------------
+most modern browsers support transforms
+so lets move the absolute positioning 
+that IE < 9 needs elsewhere
+
+.cycle-slide img {
+}
+
+.project-title {
+  position: absolute;
+  bottom: 0; 
+  left: 5%;
+  right: 1%; 
+}
+
+--------------------------------------------*/

@@ -1,6 +1,7 @@
 $.event.special.debouncedresize.threshold = 150;
 
 $(document).ready(function(){
+  
   $("#menu-button").click(
     function(event){
       $("#menu").toggleClass("hidden");
@@ -8,57 +9,31 @@ $(document).ready(function(){
     }
   );
   
-  if(Modernizr.csstransforms3d) {
-    $("#featured-projects").addClass("three-d");
-  }
-
-  $.fn.cycle.transitions.animatedBanner = {
-    before: function(opts, curr, next, fwd) {
-      opts.cssBefore = {display: 'block'};
+  // $("#featured-projects").cycle({
+  //                     // loader: 'wait',
+  //   fx      : 'none', // use CSS not fx
+  //   sync    : false , // slides not at same time
+  //   swipe   : true  , // for mobile
+  //   speed   : 1500  , // time to remove the elements w/CSS
+  //   timeout : 0     , // time on slide (must be 0 or long enough for css)
+  //   slides  : '> figure',
+  //   log     : false
+  // });
+  
+  $("#featured-projects").on
+  (
+    "cycle-before", 
+    function(event, option, outgoing, incoming){
+      // $(outgoingSlideEl).addClass('cycle-slide-outgoing')
     }
-  }
-  
-  $("#featured-projects").cycle({
-    fx: 'animatedBanner',
-    delay: 3000,
-    sync: true,
-    swipe: true,
-    speed: 2050,
-    timeout: 0,
-    slides: '> figure',
-    loader: 'wait',
-    'pause-on-hover': true
-  });
-
-  $("#featured-projects").on('cycle-after', function(){
-    var currSlide = $('.cycle-slide-active');
-    
-    currSlide.find('img').removeClass('imgExit');
-
-    $('.lower-third').removeClass('hide');
-    $('.lower-third').addClass('show');
-    $('.project-title').addClass('titleIn');
-  });
-  
-  $("#featured-projects").on('cycle-before', function(){
-    var currSlide = $('.cycle-slide-active');
-    
-    currSlide.find('img').addClass('imgExit');
-    
-    $('.project-title').removeClass('titleIn');
-    $('.lower-third').removeClass('show');
-    $('.lower-third').addClass('hide');
-  });
-
-  $('#featured-projects').on('cycle-bootstrap', function(){
-    console.log('This cycle has been initialized');
-  })
+  );
   
 }); // end document ready
 
 $(window).bind('load', function(){
   $(window).on("debouncedresize", function(){
     baseLineHeight("div[data-picture]");
+    console.log("debounce called");
   });
   baseLineHeight("div[data-picture]");
 }); // end window bind

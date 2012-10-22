@@ -33,8 +33,11 @@ module.exports = function( grunt ) {
           sass_dir: 'app/styles',
           images_dir: 'app/images',
           javascripts_dir: 'temp/scripts',
-          force: true,
-          output_style: 'compressed'
+          force: true
+          // output_style: 'compressed'
+        },
+        sass_options: {
+          debug_info: true
         }
       }
     },

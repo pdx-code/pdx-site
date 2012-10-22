@@ -1,0 +1,45 @@
+$default-origin-x: 0px;
+$default-origin-y: 0px;
+
+$font-color: lighten(#333, 20%);
+$header-color: darken($font-color, 15%);
+
+$red: #db2323;
+$aqua: #158383;
+$t-color: #93cc20;
+
+$grid-background-baseline-color: rgba(black, 0.5);
+$base-font-size: 16px;
+$base-line-height: 24px;
+
+$default-width: 95%;
+$default-margin: 2.5%;
+
+%default-container {
+  width: $default-width;
+  margin: 0px $default-margin;
+}
+
+$full-width: 100%;
+
+@mixin desaturate {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+}
+
+@mixin saturate {
+  filter: grayscale(0%);
+  -webkit-filter: grayscale(0%);
+}
+
+@mixin respond-to($media) {
+  @if $media == iphone {
+    @media only screen and (max-width: 640px ) { @content; }
+  }
+  @else if $media == tablets {
+    @media only screen and (min-width: 800px ) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == desktops {
+    @media only screen and (min-width: 1024px ) { @content; }
+  }
+}

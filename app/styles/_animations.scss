@@ -1,11 +1,19 @@
-// ------------------------------------------------ Animate Title
-@-webkit-keyframes titleEnter {
+@-webkit-keyframes projectTitleIn {
+
   from {
-      opacity: 0;
-      left: -100%;
-    }
+    -webkit-transform: translate(-100%, -30%);
+  }
   to {
-      opacity: 1;
-      right: 100%;
-    }
+    -webkit-transform: translate(25%, -30%);
+  }
+}
+
+@-webkit-keyframes projectImageIn {
+
+  from {
+    -webkit-transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(0%);
+  }
 }
